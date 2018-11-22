@@ -31,7 +31,7 @@
   bot.on("message", async message => {
     // TEST
     if(message.author.bot) return;
-    if(message.content.indexOf(config.prefix) !== 0) return;
+    if(message.content.indexOf(prefix) !== 0) return;
 
     // 單字簡化
     const sender = message.author;
