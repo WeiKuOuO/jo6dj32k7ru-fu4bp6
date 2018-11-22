@@ -1,0 +1,1 @@
+start: node --max_old_space_size=1024 index.js

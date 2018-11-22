@@ -1,0 +1,35 @@
+{
+  "name": "weikubot",
+  "version": "1.0.0",
+  "homepage": "https://github.com/WeiKuOuO/WeuKuBot#readme",
+  "description": "A Youtuber's bot",
+  "main": "node app.js",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "filesystem": "^1.0.1",
+    "fs": "0.0.1-security",
+    "mcapi": "^1.0.1",
+    "moment": "^2.22.2",
+    "moment-duration-format": "^2.2.2",
+    "ms": "^2.1.1",
+    "nodemon": "^1.18.3",
+    "request": "^2.87.0",
+    "weather-taiwan": "^1.0.6",
+    "express": "^4.15.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "engines": { "node": "8.4.0" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeiKuOuO/WeiKuBot.git"
+  },
+  "author": "WeiKuOuO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeiKuOuO/WeiKuBot/issues"
+  },
+}
