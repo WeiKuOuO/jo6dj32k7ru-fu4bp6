@@ -17,6 +17,7 @@
   const urlMain = "https://mcapi.us/server/status?ip=" + (ip);
 
   bot.on("ready", async () => {
+    bot.channels.get('519551184369877012').bulkDelete('50')
     const serverstatus = new Discord.RichEmbed()
       .setAuthor(bot.user.username)
       .setTitle("**伺服器資訊資訊**")
@@ -29,11 +30,6 @@
         
     setInterval(function(){
       request(urlMain, function(err, response, body) {
-        if(err) {
-            console.log(err);
-            const error = await bot.channels.get('519551184369877012').send('在查詢時出了點問題:P (IP錯誤)...');
-            error.edit('在查詢時出了點問題:P (IP錯誤)...')
-        }
         body = JSON.parse(body);
         var status = '伺服器現在是關閉的!';
         var member = "關閉";
