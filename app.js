@@ -13,7 +13,7 @@
   let userData = JSON.parse(fs.readFileSync('./Storage/userData.json', 'utf8'));
 
   const ip = "geht.sytes.net&port=27599                                                                  "
-  const text = "**★  " + (ip) + "** 的狀態";
+  const text = "**★ geht.sytes.net;27599  **的狀態";
   const urlMain = "https://mcapi.us/server/status?ip=" + (ip);
 
   bot.on("ready", async () => {
