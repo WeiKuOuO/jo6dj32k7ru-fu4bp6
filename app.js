@@ -18,7 +18,6 @@
   const url = "https://mcapi.us/server/image?ip=" + (ip);
 
   bot.on("ready", async () => {
-    console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
     const serverstatus = new Discord.RichEmbed()
       .setAuthor(bot.user.username)
       .setTitle("**伺服器資訊資訊**")
