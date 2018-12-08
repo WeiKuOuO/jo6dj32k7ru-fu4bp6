@@ -31,7 +31,7 @@
       request(urlMain, function(err, response, body) {
         if(err) {
             console.log(err);
-            const error = await message.channel.send('在查詢時出了點問題:P (IP錯誤)...');
+            const error = await bot.channels.get('519551184369877012').send('在查詢時出了點問題:P (IP錯誤)...');
             error.edit('在查詢時出了點問題:P (IP錯誤)...')
         }
         body = JSON.parse(body);
