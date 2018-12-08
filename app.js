@@ -15,7 +15,6 @@
   const ip = "geht.sytes.net&port=27599                                                                  "
   const text = "**★  " + (ip) + "** 的狀態";
   const urlMain = "https://mcapi.us/server/status?ip=" + (ip);
-  const url = "https://mcapi.us/server/image?ip=" + (ip);
 
   bot.on("ready", async () => {
     const serverstatus = new Discord.RichEmbed()
@@ -32,19 +31,20 @@
       request(urlMain, function(err, response, body) {
         if(err) {
             console.log(err);
-            message.channel.send('在查詢時出了點問題:P (IP錯誤)...');
+            const error = await message.channel.send('在查詢時出了點問題:P (IP錯誤)...');
+            error.edit('在查詢時出了點問題:P (IP錯誤)...')
         }
         body = JSON.parse(body);
-        var status = '**伺服器**現在是**關閉**的!';
+        var status = '伺服器現在是關閉的!';
         var member = "關閉";
         if(body.online) {
-            status = '**伺服器**現在是**開啟**的!  -  ';
+            status = '伺服器現在是開啟的!  -  ';
             if(body.players.now) {
-                member = "**" + body.players.now + "** / **" + body.players.max + "**";
-                status += '**' + body.players.now + '** 人正在遊玩!!';
+                member = body.players.now + " / " + body.players.max ;
+                status += '**' + body.players.now + ' 人正在遊玩!!';
             } else {
-                member = "**0** / **" + body.players.max + "**";
-                status += '**沒人在玩喔! 快進去搶頭香吧!**';
+                member = "0 / " + body.players.max ;
+                status += '沒人在玩喔! 快進去搶頭香吧!';
             }
         }
         const serverinfo = new Discord.RichEmbed()
@@ -55,7 +55,6 @@
           .addField(":desktop: 人數",`\`\`\`xl\n${member}\`\`\``, true)
           .addField(":wrench: 核心", `\`\`\`${body.server.name}\`\`\``, true)
           .addField(":stopwatch: 運行時間 ", `\`\`\`\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
-          .setImage(url)
         m.edit(serverinfo)
       });
     },2200)
