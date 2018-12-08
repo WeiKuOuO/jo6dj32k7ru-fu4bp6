@@ -24,7 +24,6 @@
       .setDescription("偵測中")
       .setColor("RANDOM")
       .addField(":desktop: 人數","偵測中", true)
-      .addField(":wrench: 核心", "偵測中", true)
       .addField(":stopwatch: 運行時間 ", "偵測中", true)
     const m = await bot.channels.get('519551184369877012').send(serverstatus)
         
@@ -49,7 +48,6 @@
           .setDescription(status)
           .setColor("RANDOM")
           .addField(":desktop: 人數",`\`\`\`xl\n${member}\`\`\``, true)
-          .addField(":wrench: 核心", `\`\`\`${body.server.name}\`\`\``, true)
           .addField(":stopwatch: 運行時間 ", `\`\`\`\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
         m.edit(serverinfo)
       });
