@@ -36,7 +36,7 @@
             status = '伺服器現在是開啟的!  -  ';
             if(body.players.now) {
                 member = body.players.now + " / " + body.players.max ;
-                status += '**' + body.players.now + ' 人正在遊玩!!';
+                status += '' + body.players.now + ' 人正在遊玩!!';
             } else {
                 member = "0 / " + body.players.max ;
                 status += '沒人在玩喔! 快進去搶頭香吧!';
@@ -48,7 +48,7 @@
           .setDescription(status)
           .setColor("RANDOM")
           .addField(":desktop: 人數",`\`\`\`xl\n${member}\`\`\``, true)
-          .addField(":stopwatch: 運行時間 ", `\`\`\`\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
+          .addField(":stopwatch: 運行時間 ", `\`\`\`fix\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
         m.edit(serverinfo)
       });
     },2200)
