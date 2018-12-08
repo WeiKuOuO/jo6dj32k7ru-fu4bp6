@@ -26,7 +26,7 @@
       .addField(":desktop: 人數","偵測中", true)
       .addField(":wrench: 核心", "偵測中", true)
       .addField(":stopwatch: 運行時間 ", "偵測中", true)
-    const m = await bot.channels.get('id','519551184369877012').send(serverstatus)
+    const m = await bot.channels.get('519551184369877012').send(serverstatus)
         
     setInterval(function(){
       request(urlMain, function(err, response, body) {
