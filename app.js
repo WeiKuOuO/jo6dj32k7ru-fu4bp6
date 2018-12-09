@@ -52,8 +52,14 @@
         if(body.online < 9){
           lag = '小lag';
         }
-        if(body.online > 12){
+        if(body.online > 9){
+          lag = '很lag';
+        }
+        if(body.online < 12){
           lag = '非常lag';
+        }
+        if(body.online > 12){
+          lag = '超級無敵宇宙霹靂lag';
         }
         const serverinfo = new Discord.RichEmbed()
           .setAuthor(bot.user.username)
