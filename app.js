@@ -24,13 +24,14 @@
       .setDescription("偵測中")
       .setColor("RANDOM")
       .addField(":desktop: 人數","偵測中", true)
-      .addField(":stopwatch: 運行時間 ", "偵測中", true)
+      .addField(":stopwatch: 順暢程度 ", "偵測中", true)
     const m = await bot.channels.get('519551184369877012').send(serverstatus)
         
     setInterval(function(){
       request(urlMain, function(err, response, body) {
         body = JSON.parse(body);
         var status = '伺服器現在是關閉的!';
+        var lag = '';
         var member = "關閉";
         if(body.online) {
             status = '伺服器現在是開啟的!  -  ';
@@ -42,13 +43,25 @@
                 status += '沒人在玩喔! 快進去搶頭香吧!';
             }
         }
+        if(body.online < 3){
+          lag = '順暢';
+        }
+        if(body.online < 6){
+          lag = '一般';
+        }
+        if(body.online < 9){
+          lag = '小lag';
+        }
+        if(body.online > 12){
+          lag = '非常lag';
+        }
         const serverinfo = new Discord.RichEmbed()
           .setAuthor(bot.user.username)
           .setTitle(text)
           .setDescription(status)
           .setColor("RANDOM")
           .addField(":desktop: 人數",`\`\`\`xl\n${member}\`\`\``, true)
-          .addField(":stopwatch: 運行時間 ", `\`\`\`fix\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
+          .addField(":stopwatch: 順暢程度 ", `\`\`\`fix\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
         m.edit(serverinfo)
       });
     },2200)
