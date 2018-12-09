@@ -24,7 +24,7 @@
       .setDescription("偵測中")
       .setColor("RANDOM")
       .addField(":desktop: 人數","偵測中", true)
-      .addField(":stopwatch: 順暢程度 ", "偵測中", true)
+      .addField(":stopwatch: 延遲程度 ", "偵測中", true)
     const m = await bot.channels.get('519551184369877012').send(serverstatus)
         
     setInterval(function(){
@@ -61,7 +61,7 @@
           .setDescription(status)
           .setColor("RANDOM")
           .addField(":desktop: 人數",`\`\`\`xl\n${member}\`\`\``, true)
-          .addField(":stopwatch: 順暢程度 ", `\`\`\`fix\n${moment.duration(body.duration).format(" D [天] H [時] m [分] s [秒]")}\`\`\``, true)
+          .addField(":stopwatch: 延遲程度 ", `\`\`\`fix\n${lag}\`\`\``, true)
         m.edit(serverinfo)
       });
     },2200)
