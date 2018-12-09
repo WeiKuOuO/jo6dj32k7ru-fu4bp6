@@ -31,7 +31,7 @@
       request(urlMain, function(err, response, body) {
         body = JSON.parse(body);
         var status = '伺服器現在是關閉的!';
-        var lag = '';
+        var lag = '關閉';
         var member = "關閉";
         if(body.online) {
             status = '伺服器現在是開啟的!  -  ';
@@ -42,24 +42,24 @@
                 member = "0 / " + body.players.max ;
                 status += '沒人在玩喔! 快進去搶頭香吧!';
             }
-        }
-        if(body.online < 3){
-          lag = '順暢';
-        }
-        if(body.online < 6){
-          lag = '一般';
-        }
-        if(body.online < 9){
-          lag = '小lag';
-        }
-        if(body.online > 9){
-          lag = '很lag';
-        }
-        if(body.online < 12){
-          lag = '非常lag';
-        }
-        if(body.online > 12){
-          lag = '超級無敵宇宙霹靂lag';
+            if(body.players.now < 3){
+              lag = '順暢';
+            }
+            if(body.players.now < 6){
+               lag = '一般';
+             }
+            if(body.players.now < 9){
+              lag = '小lag';
+            }
+             if(body.players.now > 9){
+              lag = '很lag';
+             }
+            if(body.players.now < 12){
+               lag = '非常lag';
+            }
+             if(body.players.now > 12){
+               lag = '超級無敵宇宙霹靂lag';
+             }
         }
         const serverinfo = new Discord.RichEmbed()
           .setAuthor(bot.user.username)
