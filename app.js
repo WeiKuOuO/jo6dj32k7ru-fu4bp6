@@ -31,7 +31,7 @@
       request(urlMain, function(err, response, body) {
         body = JSON.parse(body);
         var status = '伺服器現在是關閉的!';
-        var lag = '關閉';
+        var lag = '無法偵測';
         var member = "關閉";
         if(body.online) {
             status = '伺服器現在是開啟的!  -  ';
@@ -60,6 +60,8 @@
              if(body.players.now > 12){
                lag = '超級無敵宇宙霹靂lag';
              }
+        }else{
+          lag = '關閉';
         }
         const serverinfo = new Discord.RichEmbed()
           .setAuthor(bot.user.username)
