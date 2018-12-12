@@ -34,6 +34,18 @@
         var lag = '無法偵測';
         var member = "關閉";
         if(body.online) {
+            if(body.players.now > 2 && body.players.now < 6 ){
+              lag = '順暢';
+            }
+            if(body.players.now > 6 && body.players.now < 9){
+              lag = '小lag';
+            }
+            if(body.players.now > 9 && body.players.now < 12){
+              lag = '很lag';
+            }
+            if(body.players.now > 12){
+              lag = '超級無敵宇宙霹靂lag';
+            }
             status = '伺服器現在是開啟的!  -  ';
             if(body.players.now) {
                 member = body.players.now + " / " + body.players.max ;
@@ -42,18 +54,6 @@
                 member = "0 / " + body.players.max ;
                 status += '沒人在玩喔! 快進去搶頭香吧!';
             }
-            if(body.players.now > 2 && body.players.now < 6 ){
-              lag = '順暢';
-            }
-            if(body.players.now > 6 && body.players.now < 9){
-               lag = '小lag';
-             }
-            if(body.players.now > 9 && body.players.now < 12){
-              lag = '很lag';
-            }
-             if(body.players.now > 12){
-               lag = '超級無敵宇宙霹靂lag';
-             }
         }else{
           lag = '關閉';
         }
