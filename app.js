@@ -12,62 +12,7 @@
   // JSON Files
   let userData = JSON.parse(fs.readFileSync('./Storage/userData.json', 'utf8'));
 
-  const ip = "geht.sytes.net&port=27599                                                                  "
-  const text = "**★ geht.sytes.net;27599  **的狀態";
-  const urlMain = "https://mcapi.us/server/status?ip=" + (ip);
 
-  bot.on("ready", async () => {
-    bot.channels.get('519551184369877012').bulkDelete('50')
-    const serverstatus = new Discord.RichEmbed()
-      .setAuthor(bot.user.username)
-      .setTitle("**伺服器資訊資訊**")
-      .setDescription("偵測中")
-      .setColor("RANDOM")
-      .addField(":desktop: 人數","偵測中", true)
-      .addField(":stopwatch: 延遲程度 ", "偵測中", true)
-    const m = await bot.channels.get('519551184369877012').send(serverstatus)
-        
-    setInterval(function(){
-      request(urlMain, function(err, response, body) {
-        body = JSON.parse(body);
-        var status = '伺服器現在是關閉的!';
-        var lag = '無法偵測';
-        var member = "關閉";
-        if(body.online) {
-            if(body.players.now > 2 && body.players.now < 6 ){
-              lag = '順暢';
-            }
-            if(body.players.now > 6 && body.players.now < 9){
-              lag = '小lag';
-            }
-            if(body.players.now > 9 && body.players.now < 12){
-              lag = '很lag';
-            }
-            if(body.players.now > 12){
-              lag = '超級無敵宇宙霹靂lag';
-            }
-            status = '伺服器現在是開啟的!  -  ';
-            if(body.players.now) {
-                member = body.players.now + " / " + body.players.max ;
-                status += '' + body.players.now + ' 人正在遊玩!!';
-            } else {
-                member = "0 / " + body.players.max ;
-                status += '沒人在玩喔! 快進去搶頭香吧!';
-            }
-        }else{
-          lag = '關閉';
-        }
-        const serverinfo = new Discord.RichEmbed()
-          .setAuthor(bot.user.username)
-          .setTitle(text)
-          .setDescription(status)
-          .setColor("RANDOM")
-          .addField(":desktop: 人數",`\`\`\`xl\n${member}\`\`\``, true)
-          .addField(":stopwatch: 延遲程度 ", `\`\`\`fix\n${lag}\`\`\``, true)
-        m.edit(serverinfo)
-      });
-    },2200)
-  })
   bot.on("ready", () => {
     console.log(`${bot.user.username}成功啟動了!^w^, [ ${bot.guilds.size} | ${bot.channels.size} | ${bot.users.size} ]`);
     bot.user.setActivity(`我正在 ${bot.guilds.size} 個群組潛水`,'https://www.twitch.tv/weikuouo');
