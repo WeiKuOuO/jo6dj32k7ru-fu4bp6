@@ -87,7 +87,6 @@
     }
     //玩家資訊
     if(command === "user"){
-    message.delete().catch(O_o=>{});
     const id = args.join(" ");
     const uuid = await mcapi.usernameToUUID(id);
     const url1 = "https://visage.surgeplay.com/face/400/" + (uuid)
