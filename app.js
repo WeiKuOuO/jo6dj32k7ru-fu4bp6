@@ -25,7 +25,9 @@
     // TEST
     if(message.author.bot) return;
     if(message.content.indexOf(prefix) !== 0) return;
-
+    if(message.member.id == "476049616341565440"){
+      message.delete()
+    }
     // 單字簡化
     const sender = message.author;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
